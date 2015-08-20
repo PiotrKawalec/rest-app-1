@@ -21,7 +21,9 @@ public class Bob1 {
 	@HystrixCommand(fallbackMethod = "defaultFallback1")
     @RequestMapping(value="/", method=RequestMethod.GET)
 	public String response() throws IOException, InterruptedException {
-    	String htmlResponse = httpGet("http://127.0.0.1:9992/");
+    	
+		String htmlResponse = httpGet("http://127.0.0.1:9992/");
+    	
 		return htmlResponse;					 						 
 	}
     
