@@ -10,19 +10,18 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @Component
 @RestController
-public class Bob1 {
-	
+public class Bob1 {	
 
 	@HystrixCommand(fallbackMethod = "defaultFallback1")
     @RequestMapping(value="/", method=RequestMethod.GET)
 	public String response() throws IOException, InterruptedException {
     	
-		String htmlResponse = httpGet("http://127.0.0.1:9992/");
+		System.out.println("Inside service 1 connecting to service 2");
+		String htmlResponse = httpGet("http://127.0.0.1:9992");
     	
 		return htmlResponse;					 						 
 	}
